@@ -28,6 +28,8 @@ RUN for plugin in chucknorris greenballs scm-api git-client ansicolor descriptio
     envinject job-exporter git ws-cleanup ;\  
     do curl -sf -o $JENKINS_HOME/plugins/${plugin}.hpi \  
        -L $JENKINS_MIRROR/plugins/${plugin}/latest/${plugin}.hpi ; done 
+
+RUN apt-get install -y imagemagick
 ENTRYPOINT ["java", "-jar", "/opt/jenkins.war"]
 EXPOSE 8080
 CMD [""]
